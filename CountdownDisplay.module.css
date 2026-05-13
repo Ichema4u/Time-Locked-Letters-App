@@ -1,0 +1,51 @@
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-primary-muted);
+  border-radius: var(--radius-md);
+  padding: 0.55rem 0.35rem 0.4rem;
+}
+
+.number {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary-light);
+  margin-top: 0.25rem;
+}
+
+.unlocked {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-amber);
+  font-weight: 600;
+  margin-top: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.unlocked::before {
+  content: '✦';
+  animation: pulse 1.6s ease-in-out infinite;
+}

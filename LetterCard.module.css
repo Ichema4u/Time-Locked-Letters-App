@@ -1,0 +1,252 @@
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s var(--ease-out), border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.4s var(--ease-out) both;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px 0 0 2px;
+  background: var(--color-border);
+  transition: background 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ── Locked state ── */
+.locked {
+  border-color: var(--color-border);
+}
+
+.locked::before {
+  background: var(--color-primary-light);
+}
+
+/* ── Unlocked state ── */
+.unlocked {
+  border-color: var(--color-primary-light);
+  background: #fff;
+}
+
+.unlocked::before {
+  background: var(--color-amber);
+}
+
+/* ── Card Header ── */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.recipientRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.statusIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.recipientLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+}
+
+.recipient {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  word-break: break-word;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.deleteBtn:hover {
+  background: var(--color-terracotta-muted);
+  color: var(--color-terracotta);
+  transform: scale(1.1);
+}
+
+/* ── Meta row ── */
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.metaItem svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.7;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-text-light);
+}
+
+/* ── Lock badge ── */
+.lockBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xl);
+  text-transform: uppercase;
+  border: 1px solid rgba(59, 83, 35, 0.2);
+}
+
+.unlockBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-amber-muted);
+  color: var(--color-amber);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xl);
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 134, 12, 0.25);
+}
+
+/* ── Letter content (unlocked) ── */
+.contentWrap {
+  animation: revealLetter 0.65s var(--ease-out) both;
+}
+
+.contentDivider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-amber-light), transparent);
+  margin: 0.25rem 0;
+}
+
+.contentLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.content {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* ── Confirm delete overlay ── */
+.deleteConfirm {
+  background: var(--color-terracotta-muted);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  animation: slideDown 0.2s ease;
+}
+
+.deleteConfirmText {
+  font-size: 0.82rem;
+  color: var(--color-terracotta);
+  font-weight: 500;
+}
+
+.deleteConfirmActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.confirmYes {
+  padding: 0.35rem 0.85rem;
+  background: var(--color-terracotta);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-xl);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.confirmYes:hover {
+  background: #9a3615;
+}
+
+.confirmNo {
+  padding: 0.35rem 0.85rem;
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.confirmNo:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+}
